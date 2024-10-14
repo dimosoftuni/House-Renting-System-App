@@ -1,20 +1,19 @@
 pipeline {
     agent any
-
     stages {
+        stage('Restore') {
+            steps {
+                bat 'dotnet restore HouseRentingSystem.sln'
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building..'
+                bat 'dotnet build HouseRentingSystem.sln --configuration Release'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                bat 'dotnet test HouseRentingSystem.Tests/HouseRentingSystem.Tests.csproj'
             }
         }
     }
