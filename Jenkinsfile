@@ -7,13 +7,9 @@ pipeline {
             }
         }
         stage('Execute tests') {
-                stage('Run npm audit tests') {
-                    steps {
-                        bat 'dotnet test'
-                    }
-                }
+            steps {
+                bat 'dotnet test'
             }
         }
     }
-
-        
+}
